@@ -9,16 +9,26 @@ const quad3Div = document.getElementById('quad3');
 const quad4Div = document.getElementById('quad4');
 const topText = document.getElementById('text-top');
 const bottomText = document.getElementById('text-bottom');
+const lastNumDiv = document.getElementById('last-num');
 
 let svgImage = document.getElementById('svg');
 let targetGuess;
 let guessCounter = 0;
+let userGuess = 0;
 
 export function submitGuess(){
 
-    let userGuess = Number(inputBox.value);
+    userGuess = Number(inputBox.value);
+    
+    if (isNaN(userGuess) || userGuess < 1 || userGuess > 20){
+        alert('Please provide a numeric entry between 1 and 20');
+        return;
+    }
+    
     let resultCompare = compareNumbers(userGuess, targetGuess);
     changeView(resultCompare);
+
+    inputBox.value = '';
 }
 
 export function startGame() {
@@ -48,6 +58,9 @@ export function resetGame() {
     guessFeedback.textContent = 'Guess a number!';
     quad3Div.style.visibility = 'hidden';
     quad4Div.style.visibility = 'hidden';
+    topText.textContent = 'You have';
+    bottomText.textContent = 'guesses remaining!';
+    lastNumDiv.textContent = '';
 }
 
 function compareNumbers(userGuess, targetGuess){
@@ -87,6 +100,7 @@ function success(){
     topText.textContent = 'You guessed correctly with';
     guessCounterDiv.textContent = guessCounter;
     bottomText.textContent = 'attempts!';
+    lastNumDiv.textContent = '';
     return;
 }
 
@@ -97,18 +111,21 @@ function fail(){
     guessButton.style.visibility = 'hidden';
     inputBox.style.visibility = 'hidden';
     resetButton.style.visibility = 'visible';
+    lastNumDiv.textContent = '';
     return;
 }
 function guessLower(){
     svgImage.src = 'assets/arrow.svg';
     svgImage.style.transform = 'rotate(180deg)';
     guessFeedback.textContent = 'You need to guess lower!';
+    lastNumDiv.textContent = `Your last guess: ${userGuess}`;
 }
 
 function guessHigher(){
     svgImage.src = 'assets/arrow.svg';
     svgImage.style.transform = 'rotate(0deg)';
     guessFeedback.textContent = 'You need to guess higher!';
+    lastNumDiv.textContent = `Your last guess: ${userGuess}`;
 }
 
 function checkEndOfGame(resultCompare){
