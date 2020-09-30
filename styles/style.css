@@ -1,11 +1,9 @@
+html{
+    font-family: 'Lato', sans-serif;
+}
 
 body {
     min-width: 650px;
-}
-
-main {
-
-    
 }
 
 section {
@@ -13,10 +11,6 @@ section {
     margin: 10px;
     height: 350px;
     width: 350px;
-}
-
-div{
-
 }
 
 ul{
@@ -35,7 +29,7 @@ h1 {
     align-items: center;
     justify-content: center;
     margin: 10px;
-    font-size: 60px;
+    font-size: 50px;
 }
 
 h2{
