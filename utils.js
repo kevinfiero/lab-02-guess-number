@@ -63,7 +63,7 @@ export function resetGame() {
     lastNumDiv.textContent = '';
 }
 
-function compareNumbers(userGuess, targetGuess){
+export function compareNumbers(userGuess, targetGuess){
     if (userGuess === targetGuess) {
         return 0;
     } else if (userGuess > targetGuess){
@@ -75,8 +75,7 @@ function compareNumbers(userGuess, targetGuess){
 
 function changeView(resultCompare){
 
-    guessCounter++;
-    guessCounterDiv.textContent = 4 - guessCounter; 
+    updateGuessCounter();
 
     if (resultCompare === 0) {
         success();
@@ -137,4 +136,9 @@ function checkEndOfGame(resultCompare){
         }
         return;
     }
+}
+
+function updateGuessCounter(){
+    guessCounter++;
+    guessCounterDiv.textContent = 4 - guessCounter; 
 }
