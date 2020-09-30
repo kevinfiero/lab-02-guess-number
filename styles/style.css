@@ -1,5 +1,6 @@
 html{
     font-family: 'Lato', sans-serif;
+    background-color: #ccdbdc;
 }
 
 body {
@@ -11,6 +12,7 @@ section {
     margin: 10px;
     height: 350px;
     width: 350px;
+    background-color: #f3d5b5;
 }
 
 ul{
