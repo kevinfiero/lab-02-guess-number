@@ -14,29 +14,11 @@ let svgImage = document.getElementById('svg');
 let targetGuess;
 let guessCounter = 0;
 
-export function compareNumbers(){
+export function submitGuess(){
+
     let userGuess = Number(inputBox.value);
-    guessCounter++;
-    guessCounterDiv.textContent = 4 - guessCounter; 
-    if (userGuess === targetGuess) {
-        success();
-    } else if (userGuess > targetGuess){
-        svgImage.src = 'assets/arrow.svg';
-        svgImage.style.transform = 'rotate(180deg)';
-        guessFeedback.textContent = 'You need to guess lower!';
-    } else if (userGuess < targetGuess){
-        svgImage.src = 'assets/arrow.svg';
-        svgImage.style.transform = 'rotate(0deg)';
-        guessFeedback.textContent = 'You need to guess higher!';
-    }
-    if (guessCounter === 4){
-        if (!(userGuess === targetGuess)) {
-            fail();
-        } else {
-            success();
-        }
-        return;
-    }
+    let resultCompare = compareNumbers(userGuess, targetGuess);
+    changeView(resultCompare);
 }
 
 export function startGame() {
@@ -64,9 +46,36 @@ export function resetGame() {
     startButton.style.visibility = 'visible';
     resetButton.style.visibility = 'hidden';
     guessFeedback.textContent = 'Guess a number!';
-    return;
+    quad3Div.style.visibility = 'hidden';
+    quad4Div.style.visibility = 'hidden';
 }
 
+function compareNumbers(userGuess, targetGuess){
+    if (userGuess === targetGuess) {
+        return 0;
+    } else if (userGuess > targetGuess){
+        return 1;
+    } else if (userGuess < targetGuess){
+        return -1;
+    }
+}
+
+function changeView(resultCompare){
+
+    guessCounter++;
+    guessCounterDiv.textContent = 4 - guessCounter; 
+
+    if (resultCompare === 0) {
+        success();
+    } else if (resultCompare === 1){
+        guessLower();
+    } else if (resultCompare === -1){
+        guessHigher();
+    }
+
+    checkEndOfGame(resultCompare);
+
+}
 
 function success(){
     svgImage.src = 'assets/star.svg';
@@ -89,4 +98,26 @@ function fail(){
     inputBox.style.visibility = 'hidden';
     resetButton.style.visibility = 'visible';
     return;
+}
+function guessLower(){
+    svgImage.src = 'assets/arrow.svg';
+    svgImage.style.transform = 'rotate(180deg)';
+    guessFeedback.textContent = 'You need to guess lower!';
+}
+
+function guessHigher(){
+    svgImage.src = 'assets/arrow.svg';
+    svgImage.style.transform = 'rotate(0deg)';
+    guessFeedback.textContent = 'You need to guess higher!';
+}
+
+function checkEndOfGame(resultCompare){
+    if (guessCounter === 4){
+        if (resultCompare !== 0) {
+            fail();
+        } else {
+            success();
+        }
+        return;
+    }
 }
