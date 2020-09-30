@@ -1,21 +1,13 @@
-import { resetGame, startGame, compareNumbers } from './utils.js';
+import { resetGame, startGame, submitGuess } from './utils.js';
 
 const startButton = document.getElementById('start-button');
 const resetButton = document.getElementById('reset-button');
 const guessButton = document.getElementById('guess-button');
 
 
-guessButton.addEventListener('click', () => {
-    compareNumbers();
+guessButton.addEventListener('click', () => {submitGuess();});
 
-});
+startButton.addEventListener('click', () => {startGame();});
 
-startButton.addEventListener('click', () => {
-    startGame();
-
-});
-
-resetButton.addEventListener('click', () => {
-    resetGame();
-});
+resetButton.addEventListener('click', () => {resetGame();});
 
