@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/home.css">
+    <title>Guess the Number!</title>
+</head>
+
+<body>
+    <header>
+        <h1>Guess the Number!</h1>
+    </header>
+    <main>
+        <div class='row-format'>
+            <div class = 'column-format'>
+                <section class='column-format' id='quad2'>
+                    <h2>Rules</h2>
+                    <div>
+                        <ul>
+                            <li>Pressing the start button will generate a mysterious number between 1 and 20.</li>
+                            <li>Your goal is to guess the number!</li>
+                            <li>You will have 4 chances to guess correctly.</li>
+                            <li>Use the text box to input your guess.</li>
+                            <li>You will get feedback along the way on whether you should guess higher or lower.</li>
+                            <li>After each round you will have the option to try again.</li>
+                        </ul>
+                    </div>
+                    <button id='start-button'>Start</button>
+                    <input id='input-box'></input>
+                    <button id='guess-button'>Guess!</button>
+                </section>
+                <section class='column-format' id='quad3'>
+                    <div id="text-top">You have</div>
+                    <div id='guess-counter'>4</div>
+                    <div id="text-bottom">guesses remaining!</div>
+                </section>
+            </div>
+            <div class = 'column-format'>
+                <section class = 'column-format' id='quad1'>
+                    <img id='svg' src = 'assets/question.svg'>
+                </section>
+                <section class='column-format' id='quad4'>
+                    <div id='guess-feedback'>Guess a number!</div>
+                    <button id='reset-button'>Try Again!</button>
+                </section>
+                
+            </div>
+        </div>
+    </main>
+    <footer>
+        
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+</html>
